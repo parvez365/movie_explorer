@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+.hero-bg {
+    background-image: url("./assets/movie-theater.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
