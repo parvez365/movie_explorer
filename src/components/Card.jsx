@@ -3,14 +3,12 @@ import DetailsModel from "./DetailsModel";
 
 const Card = ({movie}) => {
   const [click, setClick] = useState(false);
-  console.log(movie);
-  
 
   return (
     <div className="w-[30%] p-3 border-2 border-white rounded-lg">
       <img src={movie.image.original} alt={movie.name} className="w-full h-[75%] bg-purple-500" />
       <div className="mt-5 px-4">
-        <h3 className="text-lg font-semibold text-white">
+        <h3 className="text-lg font-semibold text-white truncate">
           {movie.name}
         </h3>
         <div className="mt-4 mb-8 flex justify-between items-center">

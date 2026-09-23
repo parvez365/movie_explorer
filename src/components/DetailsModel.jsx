@@ -13,20 +13,20 @@ const DetailsModel = ({movie, onClose }) => {
             <RxCross2 className="text-2xl text-white" />
           </button>
         </div>
-        <div className="mt-3">
-          <div className="w-full h-[75%] bg-purple-500 flex justify-center">
-            <img src={movie.image.original} alt={movie.name}  width="100" height="40" />
+        <div className="mt-3 flex justify-between">
+          <div className="w-2/4 h-100 bg-purple-500">
+            <img src={movie.image.original} alt={movie.name}  width="100" height="40" className="w-full h-full"/>
           </div>
-          <div className="mt-5 px-4">
-            <h2 className="text-lg font-semibold ">
+          <div className="w-1/2 px-4">
+            <h2 className="text-2xl font-bold text-black truncate">
               {movie.name}
             </h2>
-            <div className="my-3 flex items-center">
-              <h3 className="text-base font-medium text-black">Rating: {movie.rating.average}</h3>
+            <div className="my-5 flex items-center">
+              <h3 className="text-lg font-semibold text-black">Rating: {movie.rating.average}</h3>
               <span className="mx-4 text-black">|</span>
-              <h3 className="text-base font-medium text-black">{movie.premiered}</h3>
+              <h3 className="text-lg font-semibold text-black">{movie.premiered}</h3>
             </div>
-            <p>{movie.summary}</p>
+            <p className="text-lg font-normal text-black line-clamp-10">{movie.summary}</p>
           </div>
         </div>
       </div>

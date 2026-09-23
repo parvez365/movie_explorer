@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 
 import Card from "../components/Card";
-import { getMovies } from "../services/constant";
+import { getMovies } from "../services/getMovies";
+import { getSearch } from "../services/getSearch";
 
 const Movies = () => {
   const [search, setSearch] = useState("");
@@ -20,14 +21,15 @@ const Movies = () => {
     fetchMovie();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSearch("");
+    try {
+      const result = await getSearch(search);
+      setMovies(result);
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  const filterMovies = movies.filter((movie) =>
-    movie.name.toLowerCase().includes(search.toLowerCase()),
-  );
 
   return (
     <section className="bg-gray-900">
@@ -43,14 +45,14 @@ const Movies = () => {
           />
           <button
             type="submit"
-            className="absolute top-1/2 -translate-1/2 right-2 cursor-pointer"
+            className="absolute top-1/2 -translate-y-1/2 right-2 cursor-pointer"
           >
             <IoSearch className="text-2xl text-white" />
           </button>
         </form>
       </div>
       <div className="py-8 flex flex-wrap justify-center gap-2.5">
-        {filterMovies.map((movie) => (
+        {movies.map((movie) => (
           <Card key={movie.id} movie={movie} />
         ))}
       </div>
